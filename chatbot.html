@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+.main{
+    display: flex;
+    background-color: gainsboro;
+    min-height: 100%;
+}  
+.one {
+    background-color: floralwhite;
+    margin: 1px;
+    height: 200px;
+    overflow: auto;
+    width: 20%;
+    height:auto;
+    }
+.two{
+     display: flex;
+    flex-direction: column;
+    background-color: gray;
+    margin: 1px;
+    height: initial;
+    width: 100%;
+}
+.inner1{
+background-color: floralwhite;
+margin: 2px;
+overflow: auto;
+margin: 40px;
+height: 300px;
+color: turquoise;
+}
+.inner2{
+background-color:ivory;
+overflow: auto;
+    position:sticky;
+    top:87px;
+}
+
+input[type=text]
+{
+    color: black;
+    height: 43px;
+    width: 1400px;  
+}
+p{
+    background-color: khaki;
+}
+
+
+   
+    </style>
+</head>
+<body>
+    
+    <div class="main">
+        <div class=" one">
+            <h3>User's Online</h3>
+            <ul>
+            
+            </ul>
+        </div>
+        <div class="main two">
+            <div class="inner1" id ="chat">
+                
+                </div>
+            <div class="inner2">
+                <input type="text" id="txt1" placeholder="Write your message...">
+                <button name="submit" onclick="SendMsg()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        display1();
+      //  var nick= prompt("Enter your nickname");
+   //localStorage.setItem("nick",nick);
+   var newArray = [];
+
+    function SendMsg()
+    {
+        
+        newArray.push(document.getElementById("txt1").value);
+
+        localStorage.setItem("msgs",newArray);
+        display1();
+    } 
+
+    function display1()
+    {
+        document.getElementById("chat").innerHTML="";
+        var newArray=localStorage.getItem("msgs");
+        if (newArray) {
+                newArray = newArray.split(",");
+                nameArray = newArray;
+        } else newArray = [];
+
+         for (var i = 0; i < newArray.length; i++) {
+                document.getElementById("chat").innerHTML += "<p>" + newArray[i] + "</p>";
+            }
+
+    }
+
+    </script>
+
+</body>
+</html>
